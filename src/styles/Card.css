@@ -1,133 +1,156 @@
-
 .precise-card-container {
-    width: 336px;
-    height: 371px;
-    border-radius: 12px;
-    background: rgba(17, 18, 38, 1);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card-image-container {
-    width: 336px;
-    height: 222px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom: 1px solid rgba(3, 55, 54, 1);
-    overflow: hidden;
-    position: relative;
-  }
-  
-/* Add these to your existing PreciseCard.css */
+  width: 100%;
+  max-width: 336px;
+  height: auto;
+  min-height: 371px;
+  border-radius: 12px;
+  background: rgba(17, 18, 38, 1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  isolation: isolate;
+}
 
-/* Blob effect styles */
+.card-image-container {
+  width: 100%;
+  height: 0;
+  padding-bottom: 66%; /* 3:2 aspect ratio */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 1px solid rgba(3, 55, 54, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-placeholder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(3, 55, 54, 0.5), rgba(17, 18, 38, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(55, 216, 213, 0.5);
+}
+
+.card-content {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(17, 18, 38, 1);
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.card-description {
+  font-size: clamp(13px, 1vw, 14px);
+  line-height: 1.5;
+  color: rgba(196, 196, 196, 0.8);
+  margin: 0;
+}
+
 .card-blob {
   position: absolute;
   width: 300px;
   height: 300px;
   background: linear-gradient(
-    180deg, 
-    rgba(55, 216, 213, 0.6) 0%, 
-    rgba(72, 109, 255, 0.4) 100%
+      180deg, 
+      rgba(55, 216, 213, 0.6) 0%, 
+      rgba(72, 109, 255, 0.4) 100%
   );
   border-radius: 50%;
   filter: blur(60px);
   z-index: 0;
   opacity: 0.3;
-  left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%);
   transition: all 0.5s ease;
   pointer-events: none;
 }
 
-.card-blur-overlay {
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(10px);
-  z-index: 1;
-  pointer-events: none;
+
+/* Hover Effects */
+.precise-card-container:hover {
+  box-shadow: 0 4px 20px rgba(3, 55, 54, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Update existing container to position relative */
-.precise-card-container {
-  /* Your existing styles */
-  position: relative;
-  isolation: isolate; /* Creates new stacking context */
+.precise-card-container:hover .card-image {
+  transform: scale(1.03);
 }
 
-/* Update content and image containers to appear above blob */
-.card-image-container,
-.card-content {
-  position: relative;
-  z-index: 2;
-  background: rgba(17, 18, 38, 0.7); /* Slightly transparent to show blob */
-}
-
-/* Enhance hover effects */
 .precise-card-container:hover .card-blob {
   opacity: 0.5;
   filter: blur(50px) brightness(1.2);
 }
 
-/* Keep all your existing styles below */
-/* ... */
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .precise-card-container {
+      max-width: 300px;
+  }
+  
+  .card-blob {
+      width: 250px;
+      height: 250px;
+  }
+}
 
-  .card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .precise-card-container:hover .card-image {
-    transform: scale(1.03);
-  }
-  
-  .image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(3, 55, 54, 0.5), rgba(17, 18, 38, 0.7));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(55, 216, 213, 0.5);
+@media (max-width: 768px) {
+  .precise-card-container {
+      max-width: 100%;
   }
   
   .card-content {
-    width: 336px;
-    height: 149px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: rgba(17, 18, 38, 1);
+      padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .precise-card-container {
+      min-height: 320px;
   }
   
+  .card-blob {
+      width: 200px;
+      height: 200px;
+      filter: blur(40px);
+  }
+  
+  .card-content {
+      padding: 16px;
+      gap: 6px;
+  }
+}
+
+@media (max-width: 360px) {
   .card-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0;
+      font-size: 16px;
   }
   
   .card-description {
-    font-size: 14px;
-    line-height: 1.5;
-    color: rgba(196, 196, 196, 0.8);
-    margin: 0;
+      font-size: 13px;
   }
   
-  /* Optional hover effect for the entire card */
-  .precise-card-container:hover {
-    box-shadow: 0 4px 20px rgba(3, 55, 54, 0.3);
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
+  .card-content {
+      padding: 14px;
   }
-
-  .precise-card-container:hover .card-blob {
-  opacity: 0.5;
-  filter: blur(50px) brightness(1.2);
 }
