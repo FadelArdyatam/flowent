@@ -1,0 +1,56 @@
+.gradient-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(97.52deg, rgba(255, 255, 255, 0.1) 27.06%, rgba(255, 255, 255, 0.05) 90.58%);
+  box-shadow: 
+    0px 6px 12px -4px rgba(0, 5, 127, 0.06),
+    0px 10px 25px -8px rgba(0, 5, 127, 0.08),
+    0px 16px 30px -4px rgba(0, 5, 127, 0.1),
+    0px 28px 40px -8px rgba(0, 5, 127, 0.2),
+    0px 100px 100px -10px rgba(0, 5, 127, 0.24),
+    0px 2px 8px 0px rgba(255, 255, 255, 0.4) inset,
+    0px 2px 6px -1px rgba(255, 255, 255, 0.7) inset;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gradient-pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.gradient-pill-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gradient-pill {
+      min-width: 180px;
+      padding: 8px 16px;
+      height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gradient-pill {
+      min-width: 160px;
+      padding: 6px 12px;
+      height: 32px;
+      font-size: 14px;
+  }
+  
+  .gradient-pill-icon {
+      font-size: 14px;
+  }
+}

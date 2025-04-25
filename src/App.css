@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.app {
+  min-height: 100vh;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.gradient-background {
+  background: #00011a;
+  position: relative;
+  min-height: 100vh;
+  z-index: 0;
+}
+
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 90px 90px;
+  z-index: 1;
+}
+
+.animated-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(0, 2, 37) 0%, rgba(0, 1, 26, 0) 70%),
+    radial-gradient(circle at 70% 60%, rgba(0, 2, 37) 0%, rgba(0, 1, 26, 0) 70%);
+  opacity: 0.8;
+  z-index: 1;
+  animation: gradientAnimation 15s ease infinite alternate;
+}
+
+
+.blob-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.4;
+  animation: blobFloat 20s infinite ease-in-out;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(55, 216, 213, 0.3);
+  top: -100px;
+  left: -100px;
+}
+
+.blob-2 {
+  width: 600px;
+  height: 600px;
+  background: rgba(1, 5, 255, 0.2);
+  top: 40%;
+  right: -200px;
+  animation-delay: 5s;
+}
+
+.blob-3 {
+  width: 400px;
+  height: 400px;
+  background: rgba(88, 232, 155, 0.2);
+  bottom: -100px;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+.blob-4 {
+  width: 300px;
+  height: 300px;
+  background: rgba(72, 109, 255, 0.2);
+  top: 20%;
+  left: 20%;
+  animation-delay: 15s;
+}
+
+
+.mist-blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(72, 109, 255, 0.15) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(55, 216, 213, 0.1) 0%, transparent 30%);
+  filter: blur(80px);
+  z-index: 3;
+  opacity: 0.6;
+  mix-blend-mode: color-burn;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 4;
+}
+
+
+.problem-card,
+.feature-item,
+.solution-sphere,
+.marquee-container {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+@keyframes blobFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(5%, 5%) scale(1.1);
+  }
+  50% {
+    transform: translate(0, 10%) scale(0.9);
+  }
+  75% {
+    transform: translate(-5%, 5%) scale(1.05);
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    opacity: 0.5;
+    background-position: 0% 0%;
+  }
+  50% {
+    opacity: 0.8;
+    background-position: 100% 100%;
+  }
+  100% {
+    opacity: 0.5;
+    background-position: 0% 0%;
+  }
+}
+
+
+.gradient-text {
+  background: linear-gradient(90deg, #37d8d5 0%, #31b8e1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: 700;
+}
+
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(55, 216, 213, 0.3);
+}
+
+
+@media (max-width: 768px) {
+  .grid-overlay {
+    height: 20%;
+    background-size: 40px 40px;
+  }
+  
+  .blob {
+    filter: blur(30px);
+  }
+  
+  .mist-blob {
+    filter: blur(70px);
+  }
+}

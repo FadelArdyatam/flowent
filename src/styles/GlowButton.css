@@ -1,0 +1,59 @@
+.glow-button {
+  background: rgba(55, 216, 213, 0.457);
+  border: none;
+  border-radius: 17px;
+  width: 17;
+  height: 6;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(55, 216, 213, 0.4);
+}
+
+.glow-button:active {
+  transform: translateY(1px);
+}
+
+.glow-button-inner {
+  background: rgba(208, 235, 245, 0.9);
+  border-radius: 17px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover .glow-button-inner {
+  background: rgba(208, 235, 245, 1);
+}
+
+.glow-button-text {
+  color: #0000aa;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.glow-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .glow-button-inner {
+    padding: 6px 17px;
+  }
+
+  .glow-button-text {
+    font-size: 14px;
+  }
+}
